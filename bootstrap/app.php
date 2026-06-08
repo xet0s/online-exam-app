@@ -11,8 +11,19 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->encryptCookies(except: [
+            'phpMyAdmin',
+            'pma_lang',
+            'pma_collation_connection',
+            'pma_user-config',
+            'pma_console_mode',
+            'pma_console_height',
+            'pma_theme',
+        ]);
+        $middleware->alias([
+            'approved' => \App\Http\Middleware\EnsureUserIsApproved::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+
     })->create();
