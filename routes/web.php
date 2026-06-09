@@ -8,6 +8,8 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\PdfExportController;
 use App\Http\Controllers\Admin\ApprovalController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\BuildingController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +45,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('exams', ExamController::class)->except(['show']);
 
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
+
+        Route::resource('departments', DepartmentController::class)->except(['show']);
+        Route::resource('buildings', BuildingController::class)->except(['show']);
 
         Route::any('/admin/phpmyadmin/{path?}', [\App\Http\Controllers\Admin\PhpMyAdminProxyController::class, 'proxy'])
             ->where('path', '.*')

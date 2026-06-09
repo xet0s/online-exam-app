@@ -17,9 +17,20 @@
 
                 <div>
                     <label for="building" class="block text-sm font-semibold text-slate-700">Bina Adı</label>
-                    <input id="building" name="building" type="text" required value="{{ old('building') }}"
-                        class="appearance-none block w-full mt-1.5 px-3.5 py-2.5 border border-slate-300 rounded-none bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm @error('building') border-rose-500/50 @enderror"
-                        placeholder="Mühendislik A Blok">
+                    <select id="building" name="building" required
+                        class="appearance-none block w-full mt-1.5 px-3.5 py-2.5 border border-slate-300 rounded-none bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm cursor-pointer @error('building') border-rose-500/50 @enderror">
+                        <option value="">Bina seçiniz...</option>
+                        @foreach($buildings as $b)
+                            <option value="{{ $b->name }}" {{ old('building') == $b->name ? 'selected' : '' }}>
+                                {{ $b->name }}{{ $b->code ? ' (' . $b->code . ')' : '' }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @if($buildings->isEmpty())
+                        <p class="mt-1 text-xs text-amber-600 font-medium">
+                            Henüz bina eklenmemiş. <a href="{{ route('buildings.create') }}" class="underline">Bina ekleyin</a>.
+                        </p>
+                    @endif
                     @error('building') <p class="mt-1 text-xs text-rose-600 font-medium">{{ $message }}</p> @enderror
                 </div>
 

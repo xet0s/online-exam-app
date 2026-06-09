@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\Building;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,8 @@ class ClassroomController extends Controller
         Gate::authorize('create', Classroom::class);
 
         $departments = Department::orderBy('name')->get();
-        return view('classrooms.create', compact('departments'));
+        $buildings = Building::orderBy('name')->get();
+        return view('classrooms.create', compact('departments', 'buildings'));
     }
 
     public function store(Request $request)
@@ -68,7 +70,8 @@ class ClassroomController extends Controller
         Gate::authorize('update', $classroom);
 
         $departments = Department::orderBy('name')->get();
-        return view('classrooms.edit', compact('classroom', 'departments'));
+        $buildings = Building::orderBy('name')->get();
+        return view('classrooms.edit', compact('classroom', 'departments', 'buildings'));
     }
 
     public function update(Request $request, Classroom $classroom)

@@ -21,51 +21,51 @@
 
     <style>
         :root {
-            --bg-page:
-            --bg-page-secondary:
-            --text-main:
-            --text-title:
-            --bg-card:
-            --border-card:
-            --text-muted:
-            --bg-input:
-            --border-input:
-            --text-input:
+            --bg-page: #f8fafc;
+            --bg-page-secondary: #f1f5f9;
+            --text-main: #475569;
+            --text-title: #0f172a;
+            --bg-card: #ffffff;
+            --border-card: #e2e8f0;
+            --text-muted: #94a3b8;
+            --bg-input: #ffffff;
+            --border-input: #cbd5e1;
+            --text-input: #1e293b;
 
-            --bg-btn-secondary:
-            --border-btn-secondary:
-            --text-btn-secondary:
-            --bg-btn-secondary-hover:
+            --bg-btn-secondary: #f1f5f9;
+            --border-btn-secondary: #e2e8f0;
+            --text-btn-secondary: #475569;
+            --bg-btn-secondary-hover: #e2e8f0;
 
             --bg-navbar: rgba(255, 255, 255, 0.95);
             --border-navbar: rgba(226, 232, 240, 0.8);
-            --bg-table-header:
-            --bg-table-row:
-            --bg-table-row-hover:
+            --bg-table-header: #f8fafc;
+            --bg-table-row: #ffffff;
+            --bg-table-row-hover: #f8fafc;
         }
 
         html.dark {
-            --bg-page:
-            --bg-page-secondary:
-            --text-main:
-            --text-title:
-            --bg-card:
-            --border-card:
-            --text-muted:
-            --bg-input:
-            --border-input:
-            --text-input:
+            --bg-page: #0f172a;
+            --bg-page-secondary: #1e293b;
+            --text-main: #cbd5e1;
+            --text-title: #f1f5f9;
+            --bg-card: #1e293b;
+            --border-card: #334155;
+            --text-muted: #64748b;
+            --bg-input: #1e293b;
+            --border-input: #334155;
+            --text-input: #e2e8f0;
 
-            --bg-btn-secondary:
-            --border-btn-secondary:
-            --text-btn-secondary:
-            --bg-btn-secondary-hover:
+            --bg-btn-secondary: #1e293b;
+            --border-btn-secondary: #334155;
+            --text-btn-secondary: #cbd5e1;
+            --bg-btn-secondary-hover: #334155;
 
             --bg-navbar: rgba(30, 41, 59, 0.95);
             --border-navbar: rgba(51, 65, 85, 0.8);
-            --bg-table-header:
-            --bg-table-row:
-            --bg-table-row-hover:
+            --bg-table-header: #1e293b;
+            --bg-table-row: #0f172a;
+            --bg-table-row-hover: #1e293b;
         }
 
         body {
@@ -100,6 +100,7 @@
             transition: color 0.2s;
         }
 
+        .card {
             background-color: var(--bg-card) !important;
             border-color: var(--border-card) !important;
         }
@@ -121,7 +122,7 @@
             transition: background-color 0.2s, border-color 0.2s;
         }
         .classroom-option-card:hover {
-            border-color:
+            border-color: #6366f1;
         }
         .classroom-option-card.opacity-50 {
             background-color: var(--bg-page-secondary) !important;
@@ -168,37 +169,37 @@
         html.dark .bg-emerald-50 {
             background-color: rgba(16, 185, 129, 0.1) !important;
             border-color: rgba(16, 185, 129, 0.2) !important;
-            color:
+            color: #6ee7b7 !important;
         }
         html.dark .bg-rose-50 {
             background-color: rgba(239, 68, 68, 0.1) !important;
             border-color: rgba(239, 68, 68, 0.2) !important;
-            color:
+            color: #fca5a5 !important;
         }
         html.dark .bg-amber-50 {
             background-color: rgba(245, 158, 11, 0.1) !important;
             border-color: rgba(245, 158, 11, 0.2) !important;
-            color:
+            color: #fcd34d !important;
         }
         html.dark .bg-emerald-50.border-emerald-250 {
             background-color: rgba(16, 185, 129, 0.1) !important;
             border-color: rgba(16, 185, 129, 0.2) !important;
-            color:
+            color: #6ee7b7 !important;
         }
         html.dark .bg-rose-50.border-rose-250 {
             background-color: rgba(239, 68, 68, 0.1) !important;
             border-color: rgba(239, 68, 68, 0.2) !important;
-            color:
+            color: #fca5a5 !important;
         }
         html.dark .bg-indigo-50 {
             background-color: rgba(99, 102, 241, 0.1) !important;
             border-color: rgba(99, 102, 241, 0.2) !important;
-            color:
+            color: #a5b4fc !important;
         }
         html.dark .bg-purple-50 {
             background-color: rgba(168, 85, 247, 0.1) !important;
             border-color: rgba(168, 85, 247, 0.2) !important;
-            color:
+            color: #d8b4fe !important;
         }
 
         footer {
@@ -245,6 +246,8 @@
                             <a href="{{ route('dashboard') }}" class="text-slate-600 hover:text-slate-900 transition-colors">Panel</a>
                             @if(auth()->user()->isAdmin() || auth()->user()->isDean())
                                 <a href="{{ route('classrooms.index') }}" class="text-slate-600 hover:text-slate-900 transition-colors">Derslikler</a>
+                                <a href="{{ route('departments.index') }}" class="text-slate-600 hover:text-slate-900 transition-colors">Bölümler</a>
+                                <a href="{{ route('buildings.index') }}" class="text-slate-600 hover:text-slate-900 transition-colors">Binalar</a>
                             @endif
                             <a href="{{ route('exams.index') }}" class="text-slate-600 hover:text-slate-900 transition-colors">Sınavlar</a>
                             @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair())
@@ -302,6 +305,8 @@
                     <a href="{{ route('dashboard') }}" class="px-3 py-2 rounded-none text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">Panel</a>
                     @if(auth()->user()->isAdmin() || auth()->user()->isDean())
                         <a href="{{ route('classrooms.index') }}" class="px-3 py-2 rounded-none text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">Derslikler</a>
+                        <a href="{{ route('departments.index') }}" class="px-3 py-2 rounded-none text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">Bölümler</a>
+                        <a href="{{ route('buildings.index') }}" class="px-3 py-2 rounded-none text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">Binalar</a>
                     @endif
                     <a href="{{ route('exams.index') }}" class="px-3 py-2 rounded-none text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">Sınavlar</a>
                     @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair())
