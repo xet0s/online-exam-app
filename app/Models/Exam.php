@@ -14,6 +14,7 @@ class Exam extends Model
         'start_time',
         'end_time',
         'instructor_id',
+        'supervisor_id',
         'department_id',
         'classroom_id',
         'status',
@@ -45,6 +46,11 @@ class Exam extends Model
     public function instructor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'instructor_id');
+    }
+
+    public function supervisor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'supervisor_id');
     }
 
     public function department(): BelongsTo

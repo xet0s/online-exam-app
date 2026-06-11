@@ -8,25 +8,25 @@
             font-family: 'DejaVu Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 11px;
             line-height: 1.4;
-            color:
+            color: #1e293b;
             margin: 0;
             padding: 0;
         }
         .header {
             text-align: center;
             margin-bottom: 25px;
-            border-bottom: 2px solid
+            border-bottom: 2px solid #3730a3;
             padding-bottom: 10px;
         }
         .header h1 {
             font-size: 18px;
             margin: 0 0 5px 0;
-            color:
+            color: #1e1b4b;
         }
         .header p {
             font-size: 10px;
             margin: 0;
-            color:
+            color: #64748b;
         }
         .info-table {
             width: 100%;
@@ -42,23 +42,23 @@
             margin-bottom: 30px;
         }
         .schedule-table th {
-            background-color:
-            color:
+            background-color: #3730a3;
+            color: #ffffff;
             font-weight: bold;
             text-align: left;
             padding: 8px 10px;
-            border: 1px solid
+            border: 1px solid #312e81;
             font-size: 10px;
             text-transform: uppercase;
         }
         .schedule-table td {
             padding: 8px 10px;
-            border: 1px solid
+            border: 1px solid #e2e8f0;
             font-size: 10px;
             vertical-align: middle;
         }
         .schedule-table tr:nth-child(even) td {
-            background-color:
+            background-color: #f8fafc;
         }
         .badge {
             display: inline-block;
@@ -68,12 +68,12 @@
             border-radius: 4px;
         }
         .badge-success {
-            background-color:
-            color:
+            background-color: #dcfce7;
+            color: #166534;
         }
         .badge-warning {
-            background-color:
-            color:
+            background-color: #fef3c7;
+            color: #92400e;
         }
         .footer {
             position: fixed;
@@ -82,8 +82,8 @@
             right: 0;
             text-align: center;
             font-size: 9px;
-            color:
-            border-top: 1px solid
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
             padding-top: 5px;
         }
     </style>
@@ -111,11 +111,11 @@
     <table class="schedule-table">
         <thead>
             <tr>
-                <th style="width: 25%;">Sınav Adı</th>
-                <th style="width: 20%;">Bölüm</th>
-                <th style="width: 20%;">Gözetmen</th>
+                <th style="width: 28%;">Sınav Adı</th>
+                <th style="width: 22%;">Bölüm</th>
+                <th style="width: 20%;">Dersi Veren</th>
                 <th style="text-align: center; width: 10%;">Öğrenci</th>
-                <th style="width: 15%;">Tarih / Saat</th>
+                <th style="width: 10%;">Tarih / Saat</th>
                 <th style="width: 10%;">Derslik</th>
             </tr>
         </thead>

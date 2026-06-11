@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamPeriodController;
 use App\Http\Controllers\PdfExportController;
 use App\Http\Controllers\Admin\ApprovalController;
 use App\Http\Controllers\Admin\DepartmentController;
@@ -40,9 +41,15 @@ Route::middleware('auth')->group(function () {
         Route::resource('classrooms', ClassroomController::class)->except(['show']);
 
         Route::get('/exams/check-availability', [ExamController::class, 'checkAvailability'])->name('exams.check-availability');
+        Route::get('/exams/suggest-datetime', [ExamController::class, 'suggestDateTime'])->name('exams.suggest-datetime');
         Route::post('/exams/approve-chair/{exam}', [ExamController::class, 'approveByChair'])->name('exams.approve-chair');
         Route::post('/exams/approve-dean/{exam}', [ExamController::class, 'approveByDean'])->name('exams.approve-dean');
         Route::resource('exams', ExamController::class)->except(['show']);
+
+        // Sınav Haftası Yönetimi
+        Route::post('/exam-periods', [ExamPeriodController::class, 'store'])->name('exam-periods.store');
+        Route::delete('/exam-periods/{examPeriod}', [ExamPeriodController::class, 'destroy'])->name('exam-periods.destroy');
+        Route::get('/exam-periods/for-department', [ExamPeriodController::class, 'getForDepartment'])->name('exam-periods.for-department');
 
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
 

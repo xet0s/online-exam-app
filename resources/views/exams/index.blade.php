@@ -65,8 +65,12 @@
                                     {{ $exam->student_count }}
                                 </td>
                                 <td class="py-4 px-6 text-xs">
-                                    <div class="text-slate-800 font-medium">{{ $exam->start_time->format('d.m.Y') }}</div>
-                                    <div class="text-slate-500 mt-0.5">{{ $exam->start_time->format('H:i') }} - {{ $exam->end_time->format('H:i') }}</div>
+                                    @if($exam->start_time && $exam->end_time)
+                                        <div class="text-slate-800 font-medium">{{ $exam->start_time->format('d.m.Y') }}</div>
+                                        <div class="text-slate-500 mt-0.5">{{ $exam->start_time->format('H:i') }} - {{ $exam->end_time->format('H:i') }}</div>
+                                    @else
+                                        <div class="text-rose-600 font-semibold">Tarih Atanmadı</div>
+                                    @endif
                                 </td>
                                 <td class="py-4 px-6">
                                     @if($exam->classrooms->isNotEmpty())
