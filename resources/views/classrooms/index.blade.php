@@ -20,7 +20,7 @@
         @endif
     </div>
 
-    <!-- Classrooms Table -->
+    
     <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200">
         @if($classrooms->isEmpty())
             <div class="text-center py-16 px-4">

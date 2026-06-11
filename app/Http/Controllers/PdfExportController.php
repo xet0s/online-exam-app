@@ -12,16 +12,13 @@ use Illuminate\Support\Facades\File;
 class PdfExportController extends Controller
 {
 
-    /**
-     * Tüm program veya belirli bir bölüm için PDF kuyruğa al.
-     * department_id verilirse sadece o bölümün PDF'i üretilir.
-     */
+    
     public function export(Request $request)
     {
         $userId       = Auth::id();
-        $departmentId = $request->input('department_id'); // null = genel
+        $departmentId = $request->input('department_id'); 
 
-        // Bölüm bazlı PDF için cache key'i ayır
+        
         $cacheKey = $departmentId
             ? "pdf_status_{$userId}_dept_{$departmentId}"
             : "pdf_status_{$userId}";
@@ -37,10 +34,7 @@ class PdfExportController extends Controller
         return redirect()->route('dashboard')->with('status', $message);
     }
 
-    /**
-     * Üretilen PDF'i indir.
-     * department_id verilirse o bölümün PDF dosyası döndürülür.
-     */
+    
     public function download(Request $request)
     {
         $userId       = Auth::id();

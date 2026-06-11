@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <!-- Users Table -->
+    
     <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">

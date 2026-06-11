@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ExamPeriodController extends Controller
 {
-    /**
-     * Sınav haftası oluştur veya mevcut olanı güncelle (upsert).
-     * Bölüm başkanı: sadece kendi bölümü için.
-     * Admin/Dekan: istedikleri bölüm veya fakülte geneli için.
-     */
+
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -29,15 +25,15 @@ class ExamPeriodController extends Controller
             'department_id' => ['nullable', 'exists:departments,id'],
         ]);
 
-        // Bölüm başkanı yalnızca kendi bölümü için tanımlayabilir
+        
         if ($user->isChair()) {
             $validated['department_id'] = $user->department_id;
         }
 
-        // Admin/dekan department_id boş bırakırsa fakülte geneli olur
+        
         $departmentId = $validated['department_id'] ?? null;
 
-        // Varsa güncelle, yoksa oluştur
+        
         ExamPeriod::updateOrCreate(
             ['department_id' => $departmentId],
             [
@@ -52,9 +48,7 @@ class ExamPeriodController extends Controller
             ->with('success', 'Sınav haftası başarıyla kaydedildi.');
     }
 
-    /**
-     * Sınav haftasını sil.
-     */
+    
     public function destroy(ExamPeriod $examPeriod)
     {
         $user = Auth::user();
@@ -73,10 +67,7 @@ class ExamPeriodController extends Controller
             ->with('success', 'Sınav haftası silindi.');
     }
 
-    /**
-     * Belirli bir bölüm için mevcut sınav dönemini döndürür (JSON).
-     * Sınav formu tarafından AJAX ile kullanılır.
-     */
+    
     public function getForDepartment(Request $request)
     {
         $departmentId = $request->input('department_id');

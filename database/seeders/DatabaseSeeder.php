@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ══════════════════════════════════════════════════════════
-        //  1. YÖNETİCİ KULLANICILARI
-        // ══════════════════════════════════════════════════════════
+
+        
+
 
         $admin = User::firstOrCreate(
             ['email' => 'admin@exam.com'],
@@ -30,9 +30,9 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  Admin oluşturuldu: admin@exam.com / password');
 
-        // ══════════════════════════════════════════════════════════
-        //  2. BÖLÜMLER
-        // ══════════════════════════════════════════════════════════
+        
+
+        
 
         $departmentsData = [
             ['name' => 'Bilgisayar Mühendisliği'],
@@ -50,9 +50,9 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  4 bölüm oluşturuldu.');
 
-        // ══════════════════════════════════════════════════════════
-        //  3. DEKANLAR (her bölüm için bir dekan, ama tüm bölümlere erişim var)
-        // ══════════════════════════════════════════════════════════
+        
+
+        
 
         $dekan = User::firstOrCreate(
             ['email' => 'dekan@exam.com'],
@@ -67,9 +67,9 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  Dekan oluşturuldu: dekan@exam.com / password');
 
-        // ══════════════════════════════════════════════════════════
-        //  4. BÖLÜM BAŞKANLARI
-        // ══════════════════════════════════════════════════════════
+        
+
+        
 
         $chairs = [
             [
@@ -109,28 +109,28 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  4 bölüm başkanı oluşturuldu.');
 
-        // ══════════════════════════════════════════════════════════
-        //  5. EĞİTMENLER
-        // ══════════════════════════════════════════════════════════
+        
+
+        
 
         $instructorsData = [
-            // Bilgisayar Mühendisliği
+
             ['name' => 'Dr. Öğr. Üyesi Emre Çelik',    'email' => 'emrecelik@exam.com',    'dept' => $bilgisayar],
             ['name' => 'Dr. Öğr. Üyesi Selin Koç',     'email' => 'selinkoc@exam.com',     'dept' => $bilgisayar],
             ['name' => 'Arş. Gör. Dr. Burak Tekin',    'email' => 'buraktekin@exam.com',   'dept' => $bilgisayar],
             ['name' => 'Doç. Dr. Hande Aydın',         'email' => 'handeaydin@exam.com',   'dept' => $bilgisayar],
 
-            // Elektrik-Elektronik Mühendisliği
+            
             ['name' => 'Prof. Dr. Sercan Güler',        'email' => 'sercangler@exam.com',   'dept' => $elektrik],
             ['name' => 'Dr. Öğr. Üyesi Elif Öztürk',  'email' => 'elifozturk@exam.com',   'dept' => $elektrik],
             ['name' => 'Dr. Öğr. Üyesi Caner Polat',  'email' => 'canerpolat@exam.com',   'dept' => $elektrik],
 
-            // Makine Mühendisliği
+            
             ['name' => 'Prof. Dr. Tuncay Eroğlu',      'email' => 'tuncayeroglu@exam.com', 'dept' => $makine],
             ['name' => 'Doç. Dr. Derya Mutlu',         'email' => 'deryamutlu@exam.com',   'dept' => $makine],
             ['name' => 'Dr. Öğr. Üyesi Ozan Kurt',    'email' => 'ozankurt@exam.com',     'dept' => $makine],
 
-            // Endüstri Mühendisliği
+            
             ['name' => 'Prof. Dr. Nihal Başaran',      'email' => 'nihalbasaran@exam.com', 'dept' => $endustri],
             ['name' => 'Doç. Dr. Kadir Yıldız',       'email' => 'kadiryildiz@exam.com',  'dept' => $endustri],
             ['name' => 'Dr. Öğr. Üyesi Aslı Toprak',  'email' => 'aslitoprak@exam.com',   'dept' => $endustri],
@@ -152,9 +152,9 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  13 eğitmen oluşturuldu.');
 
-        // ══════════════════════════════════════════════════════════
-        //  5.5. BİNALAR
-        // ══════════════════════════════════════════════════════════
+        
+
+        
 
         $buildingsData = [
             ['name' => 'A Binası', 'code' => 'A'],
@@ -172,28 +172,28 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  4 bina oluşturuldu.');
 
-        // ══════════════════════════════════════════════════════════
-        //  6. DERSLİKLER
-        // ══════════════════════════════════════════════════════════
+        
+
+        
 
         $classroomsData = [
-            // A Binası – Genel / Ortak
+
             ['name' => 'A-101', 'building' => 'A Binası', 'capacity' => 120, 'dept' => null],
             ['name' => 'A-102', 'building' => 'A Binası', 'capacity' => 80,  'dept' => null],
             ['name' => 'A-201', 'building' => 'A Binası', 'capacity' => 60,  'dept' => null],
             ['name' => 'A-202', 'building' => 'A Binası', 'capacity' => 40,  'dept' => null],
 
-            // B Binası – Bilgisayar
+            
             ['name' => 'B-101', 'building' => 'B Binası', 'capacity' => 50,  'dept' => $bilgisayar],
             ['name' => 'B-102', 'building' => 'B Binası', 'capacity' => 30,  'dept' => $bilgisayar],
             ['name' => 'B-LAB1', 'building' => 'B Binası', 'capacity' => 25, 'dept' => $bilgisayar],
 
-            // C Binası – Elektrik
+            
             ['name' => 'C-101', 'building' => 'C Binası', 'capacity' => 55,  'dept' => $elektrik],
             ['name' => 'C-102', 'building' => 'C Binası', 'capacity' => 35,  'dept' => $elektrik],
             ['name' => 'C-LAB1', 'building' => 'C Binası', 'capacity' => 20, 'dept' => $elektrik],
 
-            // D Binası – Makine & Endüstri
+            
             ['name' => 'D-101', 'building' => 'D Binası', 'capacity' => 70,  'dept' => $makine],
             ['name' => 'D-102', 'building' => 'D Binası', 'capacity' => 45,  'dept' => $endustri],
             ['name' => 'D-201', 'building' => 'D Binası', 'capacity' => 30,  'dept' => $makine],
@@ -213,14 +213,14 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  13 derslik oluşturuldu.');
 
-        // ══════════════════════════════════════════════════════════
-        //  7. SINAVLAR
-        //     – Çakışmasız, farklı günlere / saatlere yayılmış
-        //     – Status: pending / sent_to_dean / approved karışık
-        // ══════════════════════════════════════════════════════════
+        
+
+        
+
+        
 
         $examsData = [
-            // ── Bilgisayar Mühendisliği ──────────────────────────
+
             [
                 'name'          => 'Algoritmalar ve Veri Yapıları Vize',
                 'student_count' => 85,
@@ -267,7 +267,7 @@ class DatabaseSeeder extends Seeder
                 'status'        => 'pending',
             ],
 
-            // ── Elektrik-Elektronik Mühendisliği ─────────────────
+            
             [
                 'name'          => 'Devre Analizi Vize',
                 'student_count' => 90,
@@ -296,7 +296,7 @@ class DatabaseSeeder extends Seeder
                 'status'        => 'sent_to_dean',
             ],
 
-            // ── Makine Mühendisliği ───────────────────────────────
+            
             [
                 'name'          => 'Termodinamik Final',
                 'student_count' => 75,
@@ -325,7 +325,7 @@ class DatabaseSeeder extends Seeder
                 'status'        => 'pending',
             ],
 
-            // ── Endüstri Mühendisliği ─────────────────────────────
+            
             [
                 'name'          => 'Yöneylem Araştırması Vize',
                 'student_count' => 65,
@@ -355,9 +355,9 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        // ══════════════════════════════════════════════════════════
-        //  6.5. SINAV HAFTASI (Global)
-        // ══════════════════════════════════════════════════════════
+        
+
+        
         \App\Models\ExamPeriod::firstOrCreate(
             ['department_id' => null],
             [
@@ -387,9 +387,9 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✔  14 sınav oluşturuldu.');
 
-        // ══════════════════════════════════════════════════════════
-        //  ÖZETb
-        // ══════════════════════════════════════════════════════════
+        
+
+        
         $this->command->newLine();
         $this->command->table(
             ['Rol', 'E-posta', 'Şifre'],

@@ -9,10 +9,10 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <!-- Approvals List (Left Columns) -->
+
         <div class="lg:col-span-2 space-y-8">
 
-            <!-- Pending Users Section -->
+            
             <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200">
                 <div class="px-6 py-5 border-b border-slate-200 bg-slate-50/50">
                     <h2 class="text-lg font-bold text-slate-900">Onay Bekleyen Kayıtlar</h2>
@@ -61,7 +61,7 @@
                 @endif
             </div>
 
-            <!-- Approved Users Section -->
+            
             <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200">
                 <div class="px-6 py-5 border-b border-slate-200 bg-slate-50/50">
                     <h2 class="text-lg font-bold text-slate-900">Sistem Yetkilileri</h2>
@@ -111,7 +111,7 @@
 
         </div>
 
-        <!-- Add Pre-Approved User Form (Right Column - Dean Only) -->
+        
         <div>
             @if(auth()->user()->isDean() || auth()->user()->isAdmin())
                 <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200 sticky top-24">

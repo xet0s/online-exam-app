@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/exams/approve-dean/{exam}', [ExamController::class, 'approveByDean'])->name('exams.approve-dean');
         Route::resource('exams', ExamController::class)->except(['show']);
 
-        // Sınav Haftası Yönetimi
+        
         Route::post('/exam-periods', [ExamPeriodController::class, 'store'])->name('exam-periods.store');
         Route::delete('/exam-periods/{examPeriod}', [ExamPeriodController::class, 'destroy'])->name('exam-periods.destroy');
         Route::get('/exam-periods/for-department', [ExamPeriodController::class, 'getForDepartment'])->name('exam-periods.for-department');

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
+
     <div class="text-center space-y-4 mb-12">
         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Sınav & Derslik Dağıtım Portalı
@@ -13,9 +13,9 @@
     </div>
 
     @guest
-        <!-- Guest Action Panel -->
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
-            <!-- Login Action -->
+
             <div class="glass p-8 rounded-none flex flex-col justify-between space-y-6 bg-white">
                 <div class="space-y-3">
                     <div class="h-10 w-10 rounded-none bg-indigo-50 flex items-center justify-center text-indigo-600">
@@ -33,7 +33,7 @@
                 </a>
             </div>
 
-            <!-- Register Action -->
+            
             <div class="glass p-8 rounded-none flex flex-col justify-between space-y-6 bg-white">
                 <div class="space-y-3">
                     <div class="h-10 w-10 rounded-none bg-emerald-50 flex items-center justify-center text-emerald-600">
@@ -52,9 +52,9 @@
             </div>
         </div>
     @else
-        <!-- Authenticated Action Portal -->
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Personal Dashboard (Always accessible) -->
+
             <div class="glass p-6 rounded-none flex flex-col justify-between space-y-4 bg-white">
                 <div class="space-y-2">
                     <h3 class="text-lg font-bold text-slate-900 flex items-center">
@@ -70,7 +70,7 @@
                 </a>
             </div>
 
-            <!-- Classrooms Index (Admin, Dean, Chair) -->
+            
             @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair())
                 <div class="glass p-6 rounded-none flex flex-col justify-between space-y-4 bg-white">
                     <div class="space-y-2">
@@ -88,7 +88,7 @@
                 </div>
             @endif
 
-            <!-- Exams Index (Admin, Dean, Chair) -->
+            
             @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair())
                 <div class="glass p-6 rounded-none flex flex-col justify-between space-y-4 bg-white">
                     <div class="space-y-2">
@@ -106,7 +106,7 @@
                 </div>
             @endif
 
-            <!-- User Approvals (Admin, Dean, Chair) -->
+            
             @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair())
                 <div class="glass p-6 rounded-none flex flex-col justify-between space-y-4 bg-white">
                     <div class="space-y-2">
@@ -124,7 +124,7 @@
                 </div>
             @endif
 
-            <!-- Run Allocation (Admin, Dean only) -->
+            
             @if(auth()->user()->isAdmin() || auth()->user()->isDean())
                 <div class="glass p-6 rounded-none flex flex-col justify-between space-y-4 bg-white">
                     <div class="space-y-2">
@@ -145,7 +145,7 @@
                 </div>
             @endif
 
-            <!-- User Management (Admin only) -->
+            
             @if(auth()->user()->isAdmin())
                 <div class="glass p-6 rounded-none flex flex-col justify-between space-y-4 bg-white">
                     <div class="space-y-2">

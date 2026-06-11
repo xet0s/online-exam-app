@@ -21,51 +21,51 @@
 
     <style>
         :root {
-            --bg-page: #f8fafc;
-            --bg-page-secondary: #f1f5f9;
-            --text-main: #475569;
-            --text-title: #0f172a;
-            --bg-card: #ffffff;
-            --border-card: #e2e8f0;
-            --text-muted: #94a3b8;
-            --bg-input: #ffffff;
-            --border-input: #cbd5e1;
-            --text-input: #1e293b;
+            --bg-page: 
+            --bg-page-secondary: 
+            --text-main: 
+            --text-title: 
+            --bg-card: 
+            --border-card: 
+            --text-muted: 
+            --bg-input: 
+            --border-input: 
+            --text-input: 
 
-            --bg-btn-secondary: #f1f5f9;
-            --border-btn-secondary: #e2e8f0;
-            --text-btn-secondary: #475569;
-            --bg-btn-secondary-hover: #e2e8f0;
+            --bg-btn-secondary: 
+            --border-btn-secondary: 
+            --text-btn-secondary: 
+            --bg-btn-secondary-hover: 
 
             --bg-navbar: rgba(255, 255, 255, 0.95);
             --border-navbar: rgba(226, 232, 240, 0.8);
-            --bg-table-header: #f8fafc;
-            --bg-table-row: #ffffff;
-            --bg-table-row-hover: #f8fafc;
+            --bg-table-header: 
+            --bg-table-row: 
+            --bg-table-row-hover: 
         }
 
         html.dark {
-            --bg-page: #0f172a;
-            --bg-page-secondary: #1e293b;
-            --text-main: #cbd5e1;
-            --text-title: #f1f5f9;
-            --bg-card: #1e293b;
-            --border-card: #334155;
-            --text-muted: #64748b;
-            --bg-input: #1e293b;
-            --border-input: #334155;
-            --text-input: #e2e8f0;
+            --bg-page: 
+            --bg-page-secondary: 
+            --text-main: 
+            --text-title: 
+            --bg-card: 
+            --border-card: 
+            --text-muted: 
+            --bg-input: 
+            --border-input: 
+            --text-input: 
 
-            --bg-btn-secondary: #1e293b;
-            --border-btn-secondary: #334155;
-            --text-btn-secondary: #cbd5e1;
-            --bg-btn-secondary-hover: #334155;
+            --bg-btn-secondary: 
+            --border-btn-secondary: 
+            --text-btn-secondary: 
+            --bg-btn-secondary-hover: 
 
             --bg-navbar: rgba(30, 41, 59, 0.95);
             --border-navbar: rgba(51, 65, 85, 0.8);
-            --bg-table-header: #1e293b;
-            --bg-table-row: #0f172a;
-            --bg-table-row-hover: #1e293b;
+            --bg-table-header: 
+            --bg-table-row: 
+            --bg-table-row-hover: 
         }
 
         body {
@@ -122,7 +122,7 @@
             transition: background-color 0.2s, border-color 0.2s;
         }
         .classroom-option-card:hover {
-            border-color: #6366f1;
+            border-color: 
         }
         .classroom-option-card.opacity-50 {
             background-color: var(--bg-page-secondary) !important;
@@ -169,37 +169,37 @@
         html.dark .bg-emerald-50 {
             background-color: rgba(16, 185, 129, 0.1) !important;
             border-color: rgba(16, 185, 129, 0.2) !important;
-            color: #6ee7b7 !important;
+            color: 
         }
         html.dark .bg-rose-50 {
             background-color: rgba(239, 68, 68, 0.1) !important;
             border-color: rgba(239, 68, 68, 0.2) !important;
-            color: #fca5a5 !important;
+            color: 
         }
         html.dark .bg-amber-50 {
             background-color: rgba(245, 158, 11, 0.1) !important;
             border-color: rgba(245, 158, 11, 0.2) !important;
-            color: #fcd34d !important;
+            color: 
         }
         html.dark .bg-emerald-50.border-emerald-250 {
             background-color: rgba(16, 185, 129, 0.1) !important;
             border-color: rgba(16, 185, 129, 0.2) !important;
-            color: #6ee7b7 !important;
+            color: 
         }
         html.dark .bg-rose-50.border-rose-250 {
             background-color: rgba(239, 68, 68, 0.1) !important;
             border-color: rgba(239, 68, 68, 0.2) !important;
-            color: #fca5a5 !important;
+            color: 
         }
         html.dark .bg-indigo-50 {
             background-color: rgba(99, 102, 241, 0.1) !important;
             border-color: rgba(99, 102, 241, 0.2) !important;
-            color: #a5b4fc !important;
+            color: 
         }
         html.dark .bg-purple-50 {
             background-color: rgba(168, 85, 247, 0.1) !important;
             border-color: rgba(168, 85, 247, 0.2) !important;
-            color: #d8b4fe !important;
+            color: 
         }
 
         footer {
@@ -212,7 +212,7 @@
 </head>
 <body class="h-full flex flex-col selection:bg-indigo-500 selection:text-white">
 
-    <!-- Navigation Bar -->
+    
     <nav class="glass sticky top-0 z-50 border-b border-slate-200/80 bg-white/95">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <!-- Theme Toggle Button -->
+
                     <button id="theme-toggle" type="button" class="p-2 rounded-none bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-500 transition-all cursor-pointer mr-1 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700" title="Temayı Değiştir">
                         <svg id="theme-toggle-light-icon" class="hidden h-4.5 w-4.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.46 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
@@ -241,7 +241,7 @@
                     </button>
 
                     @auth
-                        <!-- Desktop Navigation -->
+
                         <div class="hidden md:flex items-center space-x-6 text-sm font-medium mr-4">
                             <a href="{{ route('dashboard') }}" class="text-slate-600 hover:text-slate-900 transition-colors">Panel</a>
                             @if(auth()->user()->isAdmin() || auth()->user()->isDean())
@@ -282,7 +282,7 @@
                             </form>
                         </div>
 
-                        <!-- Hamburger Button (Mobile Only) -->
+                        
                         <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-none bg-slate-100 border border-slate-200 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-all cursor-pointer" title="Menüyü Aç">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -298,7 +298,7 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Mobile Only) -->
+        
         @auth
             <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/80 bg-white px-4 py-3 space-y-3">
                 <div class="flex flex-col space-y-2 text-sm font-medium">
@@ -319,7 +319,7 @@
                         <a href="{{ route('approvals.index') }}" class="px-3 py-2 rounded-none text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">Onay Bekleyenler</a>
                     @endif
                 </div>
-                <!-- User details block on mobile -->
+
                 <div class="border-t border-slate-200/80 pt-3 flex flex-col px-3">
                     <div class="text-sm font-bold text-slate-800">{{ auth()->user()->name }}</div>
                     <div class="text-xs text-slate-500 capitalize">
@@ -333,9 +333,9 @@
         @endauth
     </nav>
 
-    <!-- Content Container -->
+    
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Flash Alert Messages -->
+
         @if(session('success'))
             <div class="mb-6 p-4 rounded-none bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-start space-x-3 animate-fade-in">
                 <svg class="h-5 w-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -366,12 +366,12 @@
         @yield('content')
     </main>
 
-    <!-- Footer -->
+    
     <footer class="border-t border-slate-200 bg-slate-100 py-6 text-center text-xs text-slate-500">
         <p>&copy; {{ date('Y') }} Kapalı Sınav Dağıtım & Derslik Tahsis Platformu. Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- Mobile Menu Script -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const button = document.getElementById('mobile-menu-button');
@@ -385,7 +385,7 @@
         });
     </script>
 
-    <!-- Theme Switcher Script -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggleBtn = document.getElementById('theme-toggle');

@@ -45,7 +45,7 @@ class GenerateSchedulePdf implements ShouldQueue
             $exams = collect();
 
             if ($this->departmentId) {
-                // ── Bölüm bazlı PDF ────────────────────────────────────
+
                 $dept  = Department::findOrFail($this->departmentId);
                 $title = $dept->name . ' Bölümü Sınav Programı';
 
@@ -55,7 +55,7 @@ class GenerateSchedulePdf implements ShouldQueue
                     ->get();
 
             } elseif ($user->isAdmin() || $user->isDean()) {
-                // ── Tüm fakülte PDF'i ───────────────────────────────────
+
                 $title = 'Fakülte Geneli Sınav ve Derslik Tahsis Programı';
 
                 $exams = Exam::with(['instructor', 'department', 'classrooms'])
@@ -63,7 +63,7 @@ class GenerateSchedulePdf implements ShouldQueue
                     ->get();
 
             } elseif ($user->isChair()) {
-                // ── Bölüm başkanı: kendi bölümü ────────────────────────
+
                 $title = ($user->department->name ?? 'Bölüm') . ' Sınav ve Derslik Tahsis Programı';
 
                 $exams = Exam::with(['instructor', 'department', 'classrooms'])
@@ -72,7 +72,7 @@ class GenerateSchedulePdf implements ShouldQueue
                     ->get();
 
             } else {
-                // ── Eğitmen: kendi sınavları ───────────────────────────
+
                 $title = $user->name . ' - Kişisel Sınav Görev Programı';
 
                 $exams = Exam::with(['instructor', 'department', 'classrooms'])

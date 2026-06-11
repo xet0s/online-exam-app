@@ -33,17 +33,14 @@ class ExamPeriod extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    /**
-     * Belirli bir bölüm için geçerli sınav haftasını bul.
-     * Önce bölüme özel, yoksa fakülte genelini döndür.
-     */
+    
     public static function getForDepartment(?int $departmentId): ?self
     {
         if ($departmentId) {
             $period = self::where('department_id', $departmentId)->latest()->first();
             if ($period) return $period;
         }
-        // Fakülte geneli fallback
+
         return self::whereNull('department_id')->latest()->first();
     }
 }

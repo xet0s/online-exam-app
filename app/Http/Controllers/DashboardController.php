@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $pdfStatus = Cache::get("pdf_status_{$user->id}", 'idle');
 
         $stats = [];
-        $examsByDepartment = collect(); // bölüme göre gruplu sınavlar
+        $examsByDepartment = collect(); 
         $classrooms = [];
 
         if ($user->isAdmin() || $user->isDean()) {
@@ -32,7 +32,7 @@ class DashboardController extends Controller
                 'pending_count'     => User::where('status', 'pending')->count(),
             ];
 
-            // Tüm bölümleri al ve her birinin sınavlarını grupla
+            
             $departments = Department::withCount('exams')->orderBy('name')->get();
 
             $allExams = Exam::with(['instructor', 'supervisor', 'department', 'classrooms'])
@@ -96,7 +96,7 @@ class DashboardController extends Controller
             ]);
         }
 
-        // Tüm tanımlı sınav haftalarını al (dashboard paneli için)
+        
         $allPeriods = ExamPeriod::with(['department', 'creator'])->get();
 
         return view('dashboard', compact('stats', 'examsByDepartment', 'classrooms', 'pdfStatus', 'allPeriods'));

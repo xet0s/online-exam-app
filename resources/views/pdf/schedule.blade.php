@@ -8,25 +8,25 @@
             font-family: 'DejaVu Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 11px;
             line-height: 1.4;
-            color: #1e293b;
+            color: 
             margin: 0;
             padding: 0;
         }
         .header {
             text-align: center;
             margin-bottom: 25px;
-            border-bottom: 2px solid #3730a3;
+            border-bottom: 2px solid 
             padding-bottom: 10px;
         }
         .header h1 {
             font-size: 18px;
             margin: 0 0 5px 0;
-            color: #1e1b4b;
+            color: 
         }
         .header p {
             font-size: 10px;
             margin: 0;
-            color: #64748b;
+            color: 
         }
         .info-table {
             width: 100%;
@@ -42,23 +42,23 @@
             margin-bottom: 30px;
         }
         .schedule-table th {
-            background-color: #3730a3;
-            color: #ffffff;
+            background-color: 
+            color: 
             font-weight: bold;
             text-align: left;
             padding: 8px 10px;
-            border: 1px solid #312e81;
+            border: 1px solid 
             font-size: 10px;
             text-transform: uppercase;
         }
         .schedule-table td {
             padding: 8px 10px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid 
             font-size: 10px;
             vertical-align: middle;
         }
         .schedule-table tr:nth-child(even) td {
-            background-color: #f8fafc;
+            background-color: 
         }
         .badge {
             display: inline-block;
@@ -68,12 +68,12 @@
             border-radius: 4px;
         }
         .badge-success {
-            background-color: #dcfce7;
-            color: #166534;
+            background-color: 
+            color: 
         }
         .badge-warning {
-            background-color: #fef3c7;
-            color: #92400e;
+            background-color: 
+            color: 
         }
         .footer {
             position: fixed;
@@ -82,8 +82,8 @@
             right: 0;
             text-align: center;
             font-size: 9px;
-            color: #94a3b8;
-            border-top: 1px solid #e2e8f0;
+            color: 
+            border-top: 1px solid 
             padding-top: 5px;
         }
     </style>

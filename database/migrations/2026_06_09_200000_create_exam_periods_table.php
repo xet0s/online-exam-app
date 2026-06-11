@@ -13,8 +13,8 @@ return new class extends Migration
             $table->string('name')->default('Sınav Haftası');
             $table->date('start_date');
             $table->date('end_date');
-            // null = tüm fakülte için geçerli (admin/dekan tarafından tanımlanır)
-            // dolu = sadece o bölüm için geçerli (bölüm başkanı tanımlayabilir)
+
+            
             $table->foreignId('department_id')
                 ->nullable()
                 ->constrained('departments')

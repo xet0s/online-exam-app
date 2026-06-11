@@ -3,7 +3,7 @@
 @section('content')
 <div class="space-y-8">
 
-    {{-- ══ HEADER ══════════════════════════════════════════════════════ --}}
+    
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
             <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Yönetim Paneli</h1>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="flex flex-wrap gap-3 items-center">
-            {{-- Otomatik Dağıtım Butonu --}}
+
             @if(auth()->user()->isAdmin() || auth()->user()->isDean())
                 <form action="{{ route('allocation.run') }}" method="POST" class="inline">
                     @csrf
@@ -24,7 +24,7 @@
                 </form>
             @endif
 
-            {{-- Tüm Program PDF --}}
+            
             <div class="inline-flex items-center rounded-none p-1 bg-white border border-slate-200">
                 @if($pdfStatus === 'pending')
                     <span class="text-xs text-slate-600 px-3 py-1.5 flex items-center">
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    {{-- ══ İSTATİSTİK KARTLARI ════════════════════════════════════════ --}}
+    
     @if(!auth()->user()->isInstructor() && !empty($stats))
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @if(auth()->user()->isAdmin() || auth()->user()->isDean())
@@ -84,7 +84,7 @@
         </div>
     @endif
 
-    {{-- ══ SINAV HAFTASI YÖNETİM PANELİ ═══════════════════════════════ --}}
+    
     @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair())
     <div class="glass rounded-none bg-white border border-slate-200 shadow-sm overflow-hidden">
         <div class="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-violet-50 to-indigo-50 flex items-center justify-between">
@@ -99,7 +99,7 @@
                     <p class="text-xs text-slate-500">Otomatik tarih atama için sınav dönemi aralığını tanımlayın.</p>
                 </div>
             </div>
-            {{-- Mevcut tanımlı dönemler --}}
+
             <div class="flex flex-wrap gap-2">
                 @foreach($allPeriods as $period)
                     <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white border border-violet-200 text-xs">
@@ -196,7 +196,7 @@
                     $deptExams = $group['exams'];
                     $deptId    = $dept->id ?? null;
 
-                    // Bu bölüm için PDF durumunu cache'den oku
+                    
                     $deptPdfStatusKey = "pdf_status_" . auth()->id() . "_dept_{$deptId}";
                     $deptPdfPathKey   = "pdf_path_"   . auth()->id() . "_dept_{$deptId}";
                     $deptPdfStatus    = \Illuminate\Support\Facades\Cache::get($deptPdfStatusKey, 'idle');
@@ -204,7 +204,7 @@
 
                 <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200">
 
-                    {{-- Bölüm Başlığı --}}
+                    
                     <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <div class="flex items-center gap-3">
                             <div class="h-8 w-8 rounded-none bg-indigo-100 border border-indigo-200 flex items-center justify-center flex-shrink-0">
@@ -219,7 +219,7 @@
                         </div>
 
                         <div class="flex items-center gap-2 flex-wrap">
-                            {{-- Yeni Sınav Butonu --}}
+
                             @if(auth()->user()->isAdmin() || auth()->user()->isDean() || auth()->user()->isChair() || auth()->user()->isInstructor())
                                 <a href="{{ route('exams.create') }}"
                                    class="inline-flex items-center px-3 py-1.5 rounded-none bg-white border border-slate-200 hover:bg-indigo-50 hover:border-indigo-300 text-xs font-semibold text-indigo-600 transition-all">
@@ -230,7 +230,7 @@
                                 </a>
                             @endif
 
-                            {{-- Bölüm PDF Butonu --}}
+                            
                             @if($deptId)
                                 @if($deptPdfStatus === 'pending')
                                     <span class="inline-flex items-center px-3 py-1.5 rounded-none bg-amber-50 border border-amber-200 text-xs font-semibold text-amber-700">
@@ -271,7 +271,7 @@
                         </div>
                     </div>
 
-                    {{-- Sınav Tablosu --}}
+                    
                     @if($deptExams->isEmpty())
                         <div class="text-center py-10 text-slate-400 text-sm">
                             Bu bölüme ait sınav kaydı bulunmamaktadır.

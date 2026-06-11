@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <!-- Exams Table -->
+    
     <div class="glass rounded-none shadow-sm overflow-hidden bg-white border border-slate-200">
         @if($exams->isEmpty())
             <div class="text-center py-16 px-4">

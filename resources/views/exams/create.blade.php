@@ -33,7 +33,7 @@
                     <div>
                         <label for="instructor_id" class="block text-sm font-semibold text-slate-700">Dersi Veren Hoca</label>
                         @if(auth()->user()->isInstructor())
-                            {{-- Eğitmen sadece kendi adını görür, instructor_id otomatik atanır --}}
+
                             <input type="text" disabled
                                 value="{{ auth()->user()->name }}"
                                 class="appearance-none block w-full mt-1.5 px-3.5 py-2.5 border border-slate-300 rounded-none bg-slate-50 text-slate-500 cursor-not-allowed text-sm">
@@ -50,14 +50,14 @@
                             </select>
                         @endif
                         @error('instructor_id') <p class="mt-1 text-xs text-rose-600 font-medium">{{ $message }}</p> @enderror
-                        {{-- Hoca çakışma uyarısı (JS tarafından doldurulur) --}}
+
                         <p id="instructor-conflict-warning" class="mt-1 text-xs text-rose-600 font-medium hidden">
                             ⚠️ Bu eğitmenin seçilen saatte başka bir sınavı bulunmaktadır!
                         </p>
                     </div>
                 </div>
 
-                {{-- Gözetmen bilgi notu --}}
+                
                 <div class="flex items-start gap-2.5 p-3.5 rounded-none bg-indigo-50 border border-indigo-200">
                     <svg class="h-4 w-4 text-indigo-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -68,7 +68,7 @@
                     </p>
                 </div>
 
-                {{-- ── Otomatik Tarih Ata Paneli ─────────────────────────────── --}}
+                
                 <div id="auto-date-panel" class="rounded-none border border-violet-200 bg-violet-50 p-4 space-y-3">
                     <div class="flex items-center justify-between flex-wrap gap-3">
                         <div class="flex items-center gap-2">
@@ -108,7 +108,7 @@
                     <div id="suggest-error"  class="hidden text-xs font-medium text-rose-700 bg-rose-50 border border-rose-200 px-3 py-2 rounded-none"></div>
                 </div>
 
-                {{-- ── Tarih / Saat Alanları ─────────────────────────────────── --}}
+                
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
                         <label for="date" class="block text-sm font-semibold text-slate-700">Sınav Tarihi</label>
@@ -200,7 +200,7 @@
         const checkboxes       = document.querySelectorAll('.classroom-checkbox');
         const conflictWarning  = document.getElementById('instructor-conflict-warning');
 
-        // ── Otomatik Tarih Ata ──────────────────────────────────────────
+        
         const suggestBtn     = document.getElementById('suggest-btn');
         const suggestIcon    = document.getElementById('suggest-icon');
         const suggestSpinner = document.getElementById('suggest-spinner');
@@ -212,16 +212,16 @@
         function getDepartmentId() {
             const deptSelect = document.getElementById('department_id');
             if (deptSelect && deptSelect.value) return deptSelect.value;
-            // Eğitmen / bölüm başkanı için hidden field yoksa meta tag kullanabiliriz
-            // – sunucu tarafı render edilen bir data attr'dan alalım
+
+            
             return document.getElementById('auto-date-panel')?.dataset.departmentId || '';
         }
 
-        // Sınav haftasını yükle ve period-label'ı güncelle
+        
         function loadPeriodLabel() {
             const deptId = getDepartmentId();
             if (!deptId) {
-                // Admin/dekan için departman seçildikten sonra çekilecek
+
                 periodLabel.textContent = 'Kapsam seçildikten sonra sınav haftası gösterilecek.';
                 return;
             }
@@ -239,7 +239,7 @@
 
         loadPeriodLabel();
 
-        // Admin için departman değişince yeniden yükle
+        
         const deptSelect = document.getElementById('department_id');
         if (deptSelect) deptSelect.addEventListener('change', loadPeriodLabel);
 
@@ -272,7 +272,7 @@
                             suggestError.textContent = data.error;
                             suggestError.classList.remove('hidden');
                         } else {
-                            // Alanları doldur
+
                             if (dateInput)      dateInput.value      = data.date;
                             if (startHourInput) startHourInput.value = data.start_hour;
                             if (endHourInput)   endHourInput.value   = data.end_hour;
@@ -284,7 +284,7 @@
                             suggestResult.textContent = msg;
                             suggestResult.classList.remove('hidden');
 
-                            // Derslik müsaitliğini güncelle
+                            
                             checkClassroomAvailability();
                         }
                     })
@@ -300,7 +300,7 @@
             });
         }
 
-        // ── Derslik Müsaitliği ve Hoca Çakışması ───────────────────────
+        
         function getInstructorId() {
             if (instructorSelect) return instructorSelect.value;
             const hidden = document.querySelector('input[name="instructor_id"]');

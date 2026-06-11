@@ -48,7 +48,7 @@ class ExamController extends Controller
             $departments = Department::orderBy('name')->get();
             $classrooms = Classroom::orderBy('name')->get();
         } else {
-            // Eğitmen kendi adını görür; bölüm başkanı/müdür bölüm hocalarını görür
+
             if ($user->isInstructor()) {
                 $instructors = User::where('id', $user->id)->get();
             } else {
@@ -73,7 +73,7 @@ class ExamController extends Controller
 
         $user = Auth::user();
 
-        // Eğitmen kendi sınavını giriyorsa instructor_id otomatik atanır
+        
         if ($user->isInstructor()) {
             $request->merge(['instructor_id' => $user->id]);
         }
@@ -130,7 +130,7 @@ class ExamController extends Controller
         }
 
         if (!empty($validated['start_time']) && !empty($validated['end_time'])) {
-            // ─── Çakışma Kontrolü: Dersi Veren Hocanın Aynı Saatte Başka Sınavı ────
+
             $instructorConflict = Exam::where('instructor_id', $validated['instructor_id'])
                 ->where('start_time', '<', $validated['end_time'])
                 ->where('end_time', '>', $validated['start_time'])
@@ -140,7 +140,7 @@ class ExamController extends Controller
                 return back()->withErrors(['instructor_id' => 'Seçilen eğitmenin bu saat aralığında başka bir sınavı bulunmaktadır. Lütfen farklı bir saat seçin.'])->withInput();
             }
 
-            // ─── Çakışma Kontrolü: Derslik ──────────────────────────────────────────
+            
             if (!empty($request->input('classroom_ids'))) {
                 $classroomIds = $request->input('classroom_ids');
                 $occupied = DB::table('classroom_exam')
@@ -217,7 +217,7 @@ class ExamController extends Controller
 
         $user = Auth::user();
 
-        // Eğitmen kendi sınavını güncelliyorsa instructor_id değişmez
+        
         if ($user->isInstructor()) {
             $request->merge(['instructor_id' => $user->id]);
         }
@@ -274,7 +274,7 @@ class ExamController extends Controller
         }
 
         if (!empty($validated['start_time']) && !empty($validated['end_time'])) {
-            // ─── Çakışma Kontrolü: Dersi Veren Hocanın Aynı Saatte Başka Sınavı ────
+
             $instructorConflict = Exam::where('instructor_id', $validated['instructor_id'])
                 ->where('start_time', '<', $validated['end_time'])
                 ->where('end_time', '>', $validated['start_time'])
@@ -285,7 +285,7 @@ class ExamController extends Controller
                 return back()->withErrors(['instructor_id' => 'Seçilen eğitmenin bu saat aralığında başka bir sınavı bulunmaktadır. Lütfen farklı bir saat seçin.'])->withInput();
             }
 
-            // ─── Çakışma Kontrolü: Derslik ──────────────────────────────────────────
+            
             if (!empty($request->input('classroom_ids'))) {
                 $classroomIds = $request->input('classroom_ids');
                 $occupied = DB::table('classroom_exam')
@@ -348,7 +348,7 @@ class ExamController extends Controller
         $examId      = $request->input('exam_id');
         $instructorId = $request->input('instructor_id');
 
-        // Doluluk durumundaki derslik ID'leri
+        
         $occupiedClassroomIds = DB::table('classroom_exam')
             ->join('exams', 'classroom_exam.exam_id', '=', 'exams.id')
             ->where('exams.start_time', '<', $endTime)
@@ -360,7 +360,7 @@ class ExamController extends Controller
             ->unique()
             ->values();
 
-        // Hoca çakışması: bu saatte dersi olan başka bir sınav var mı?
+        
         $instructorConflict = false;
         if ($instructorId) {
             $instructorConflict = Exam::where('instructor_id', $instructorId)
@@ -416,25 +416,22 @@ class ExamController extends Controller
         return back()->with('success', 'Sınav başarıyla onaylandı ve takvime eklendi.');
     }
 
-    /**
-     * Sınav haftası içinde, ilk uygun tarih/saat dilimini öner.
-     * Çakışma kontrolü: aynı hoca + aynı bölüm sınavı çakışmaması.
-     */
+    
     public function suggestDateTime(Request $request)
     {
         $request->validate([
             'department_id' => ['required', 'exists:departments,id'],
             'instructor_id' => ['nullable', 'exists:users,id'],
-            'duration'      => ['nullable', 'integer', 'min:30', 'max:480'], // dakika
+            'duration'      => ['nullable', 'integer', 'min:30', 'max:480'], 
             'exam_id'       => ['nullable', 'integer'],
         ]);
 
         $departmentId = (int) $request->input('department_id');
         $instructorId = $request->input('instructor_id');
-        $duration     = (int) ($request->input('duration', 120)); // varsayılan 2 saat
+        $duration     = (int) ($request->input('duration', 120)); 
         $examId       = $request->input('exam_id');
 
-        // Sınav haftasını al
+        
         $period = ExamPeriod::getForDepartment($departmentId);
 
         if (!$period) {
@@ -443,13 +440,13 @@ class ExamController extends Controller
             ], 422);
         }
 
-        // Günlük sabit zaman dilimleri (başlangıç saatleri)
+        
         $timeSlots = ['09:00', '11:00', '13:00', '15:00'];
 
         $startDate = $period->start_date->copy();
         $endDate   = $period->end_date->copy();
 
-        // Son atanan sınavı bul ki onu baz alarak 2 gün ileri atalım
+        
         $lastExam = \App\Models\Exam::where('department_id', $departmentId)
             ->whereNotNull('start_time')
             ->orderBy('start_time', 'desc')
@@ -479,12 +476,12 @@ class ExamController extends Controller
         }
 
         foreach ($daysToTry as $day) {
-            // Hafta sonlarını atla (isteğe bağlı - kaldırmak için bu bloğu silin)
+
             if ($day->isWeekend()) {
                 continue;
             }
 
-            // O gün o bölüm için en fazla 3 sınav kısıtlaması
+            
             $dailyExamCount = \App\Models\Exam::where('department_id', $departmentId)
                 ->whereDate('start_time', $day->format('Y-m-d'))
                 ->count();
@@ -498,7 +495,7 @@ class ExamController extends Controller
                 $startTime = $day->copy()->setTime((int)$h, (int)$m);
                 $endTime   = $startTime->copy()->addMinutes($duration);
 
-                // Günün sonunu aşıyorsa (19:00+) bu dilimleri atla
+                
                 if ($endTime->hour >= 19 || ($endTime->hour === 18 && $endTime->minute > 0)) {
                     continue;
                 }
@@ -506,7 +503,7 @@ class ExamController extends Controller
                 $startStr = $startTime->format('Y-m-d H:i:s');
                 $endStr   = $endTime->format('Y-m-d H:i:s');
 
-                // ─ Hoca çakışma kontrolü ─────────────────────────────
+                
                 $instructorBusy = false;
                 if ($instructorId) {
                     $instructorBusy = \App\Models\Exam::where('instructor_id', $instructorId)
@@ -518,14 +515,14 @@ class ExamController extends Controller
 
                 if ($instructorBusy) continue;
 
-                // ─ Bölüm sınavı çakışma kontrolü ─────────────────────
+                
                 $deptConflictCount = \App\Models\Exam::where('department_id', $departmentId)
                     ->where('start_time', '<', $endStr)
                     ->where('end_time', '>', $startStr)
                     ->when($examId, fn($q) => $q->where('id', '!=', $examId))
                     ->count();
 
-                // Bu dilimde uygunsa öner
+                
                 return response()->json([
                     'date'              => $day->format('Y-m-d'),
                     'start_hour'        => $startTime->format('H:i'),
